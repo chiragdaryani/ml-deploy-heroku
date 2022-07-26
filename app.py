@@ -81,7 +81,10 @@ def predict():
 
 
         #get prediction from model endpoint deployed on aws as api ( stored in heroku config)
-        r = requests.post(process.env.AWS_MODEL_API_URL, json={
+        import os
+        model_api = os.getenv("AWS_MODEL_API_URL")
+        
+        r = requests.post(model_api, json={
         "data":X.tolist()
         })
         
